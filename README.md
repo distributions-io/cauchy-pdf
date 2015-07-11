@@ -40,18 +40,18 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = pdf( 1 );
-// returns
+// returns ~0.159
 
 out = pdf( -1 );
-// returns 0
+// returns ~0.159
 
 x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
 out = pdf( x );
-// returns [...]
+// returns [ ~0.318, ~0.255, ~0.159, ~0.0979, ~0.0637, ~0.0439 ]
 
-x = new Int8Array( x );
+x = new Float32Array( x );
 out = pdf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [~0.318,~0.255,~0.159,~0.0979,~0.0637,~0.0439] )
 
 x = new Int16Array( 6 );
 for ( i = 0; i < 6; i++ ) {
@@ -66,9 +66,9 @@ mat = matrix( x, [3,2], 'int16' );
 
 out = pdf( mat );
 /*
-	[
-
-	   ]
+	[ ~0.318 ~0.255 
+	  ~0.159 ~0.0979
+	  ~0.0637 ~0.0439 ]
 */
 ```
 
@@ -88,10 +88,10 @@ A [Cauchy](https://en.wikipedia.org/wiki/Cauchy_distribution) distribution is a 
 var x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
 
 var out = pdf( x, {
-	'gamma': 1,
-	'x0': 10,
+	'gamma': 0.1,
+	'x0': 1,
 });
-// returns [...]
+// returns [ ~0.0315, ~0.122, ~3.18, ~0.122, ~0.0315, ~0.0141 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -113,7 +113,7 @@ function getValue( d, i ) {
 var out = pdf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ ~0.318, ~0.255, ~0.159, ~0.0979, ~0.0637, ~0.0439 ]
 ```
 
 
@@ -135,12 +135,12 @@ var out = pdf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,~0.318]},
+		{'x':[1,~0.255]},
+		{'x':[2,~0.159]},
+		{'x':[3,~0.0979]},
+		{'x':[4,0.0637]},
+		{'x':[5,~0.0439]}
 	]
 */
 
@@ -156,15 +156,19 @@ var x, out;
 x = new Int8Array( [0,1,2,3,4] );
 
 out = pdf( x, {
+	'gamma': 0.1,
+	'x0': 2,
 	'dtype': 'int32'
 });
-// returns Int32Array( [...] )
+// returns Int32Array( [0,0,3,0,0] )
 
 // Works for plain arrays, as well...
 out = pdf( [0,0.5,1,1.5,2], {
+	'gamma': 0.1,
+	'x0': 2,
 	'dtype': 'uint8'
 });
-// returns Uint8Array( [...] )
+// returns Uint8Array( [0,0,3,0,0] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -181,7 +185,7 @@ x = [ 0, 0.5, 1, 1.5, 2 ];
 out = pdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ ~0.318, ~0.255, ~0.159, ~0.0979, ~0.0637, ~0.0439 ]
 
 bool = ( x === out );
 // returns true
@@ -201,9 +205,9 @@ out = pdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[ ~0.318 ~0.255 
+	  ~0.159 ~0.0979
+	  ~0.0637 ~0.0439 ]
 */
 
 bool = ( mat === out );
