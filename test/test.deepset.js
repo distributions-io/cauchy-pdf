@@ -43,7 +43,13 @@ describe( 'deepset pdf', function tests() {
 		data = pdf( data, gamma, x0, 'x' );
 
 		expected = [
-
+			{'x':0.03183099},
+			{'x':0.06366198},
+			{'x':0.15915494},
+			{'x':0.31830989},
+			{'x':0.15915494},
+			{'x':0.06366198},
+			{'x':0.03183099}
 		];
 
 		for ( i = 0; i < data.length; i++ ) {
@@ -63,7 +69,13 @@ describe( 'deepset pdf', function tests() {
 
 		data = pdf( data, gamma, x0, 'x/1', '/' );
 		expected = [
-
+			{'x':[9,0.03183099]},
+			{'x':[9,0.06366198]},
+			{'x':[9,0.15915494]},
+			{'x':[9,0.31830989]},
+			{'x':[9,0.15915494]},
+			{'x':[9,0.06366198]},
+			{'x':[9,0.03183099]}
 		];
 
 		for ( i = 0; i < data.length; i++ ) {

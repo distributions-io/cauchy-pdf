@@ -28,7 +28,7 @@ describe( 'number pdf', function tests() {
 	});
 
 	it( 'should evaluate the Cauchy probability density function', function test() {
-		assert.closeTo( pdf( 2, gamma, x0 ),  , 1e-4 );
+		assert.closeTo( pdf( 2, gamma, x0 ), 0.06366198, 1e-7 );
 	});
 
 });
