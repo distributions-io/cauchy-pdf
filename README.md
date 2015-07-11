@@ -7,7 +7,7 @@ Probability Density Function
 The [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) (PDF) for a [Cauchy](https://en.wikipedia.org/wiki/Cauchy_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="f(x;\gamma,x_0)=\frac{1}{\pi\gamma\,\left[1 + \left(\frac{x-x_0}{\gamma}\right)^2\right]}\!" data-equation="eq:pdf_function">
-	<img src="" alt="Probability density function (PDF) for a Cauchy distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/cauchy-pdf/00c612efe8859cd5832b30fb3c17275aa8c82d42/docs/img/eqn.svg" alt="Probability density function (PDF) for a Cauchy distribution.">
 	<br>
 </div>
 
