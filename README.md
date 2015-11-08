@@ -11,7 +11,7 @@ The [probability density function](https://en.wikipedia.org/wiki/Probability_den
 	<br>
 </div>
 
-where `gamma` is the scale parameter and `x0` is the location parameter.
+where `gamma > 0` is the scale parameter and `x0` is the location parameter.
 
 ## Installation
 
@@ -66,7 +66,7 @@ mat = matrix( x, [3,2], 'float32' );
 
 out = pdf( mat );
 /*
-	[ ~0.318 ~0.255 
+	[ ~0.318 ~0.255
 	  ~0.159 ~0.0979
 	  ~0.0637 ~0.0439 ]
 */
@@ -82,7 +82,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Cauchy](https://en.wikipedia.org/wiki/Cauchy_distribution) distribution is a function of 2 parameter(s): `gamma`(scale parameter) and `x0`(location parameter). By default, `gamma` is equal to `1` and `x0` is equal to `0`. To adjust either parameter, set the corresponding option(s).
+A [Cauchy](https://en.wikipedia.org/wiki/Cauchy_distribution) distribution is a function of two parameters: `gamma > 0`(scale parameter) and `x0`(location parameter). By default, `gamma` is equal to `1` and `x0` is equal to `0`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
@@ -205,7 +205,7 @@ out = pdf( mat, {
 	'copy': false
 });
 /*
-	[ ~0.318 ~0.255 
+	[ ~0.318 ~0.255
 	  ~0.159 ~0.0979
 	  ~0.0637 ~0.0439 ]
 */
